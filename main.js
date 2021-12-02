@@ -419,6 +419,19 @@ app.post('/deleteocung/', function (req, res) {
          res.end(JSON.stringify(results.rows));
      });
  });
+ 
+ app.post('/deletequanlymay/', function (req, res) {
+     var postData = req.body;
+     res.header("Access-Control-Allow-Origin", "*");
+     res.header("Access-Control-Allow-Credentials", true);
+     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
+     pool.query('DELETE FROM quanlymay where masanpham=($1)', postData, function (error, results, fields) {
+         if (error) throw error;
+         res.end(JSON.stringify(results.rows));
+     });
+ });
 
 app.post('/quanlymay/', function (req, res) {
     var postData = req.body;
@@ -427,7 +440,7 @@ app.post('/quanlymay/', function (req, res) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
-    pool.query('INSERT INTO quanlymay VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)', postData, function (error, results, fields) {
+    pool.query('INSERT INTO quanlymay VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16)', postData, function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
     });
