@@ -83,6 +83,19 @@ app.post('/getdanhsachdonhangtheomadonhang/', function (req, res) {
     });
 });
 
+app.post('/getquanlymaytheomasanpham/', function (req, res) {
+    var postData = req.body;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
+    pool.query('select * from quanlymay where masanpham = ($1)', postData, function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results.rows));
+    });
+});
+
 //input user
 app.post('/user/', function (req, res) {
     var postData = req.body;
@@ -637,6 +650,19 @@ app.put('/updatetrangthaidonhang/', function (req, res) {
      res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
      pool.query('DELETE FROM danhsachdonhang where madonhang = ($1)', postData, function (error, results, fields) {
+         if (error) throw error;
+         res.end(JSON.stringify(results.rows));
+     });
+ });
+ 
+  app.post('/deletedanhsachdonhangsanphamreal/', function (req, res) {
+     var postData = req.body;
+     res.header("Access-Control-Allow-Origin", "*");
+     res.header("Access-Control-Allow-Credentials", true);
+     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
+     pool.query('DELETE FROM danhsachdonhang where madonhang = ($1) and masanpham = ($2)', postData, function (error, results, fields) {
          if (error) throw error;
          res.end(JSON.stringify(results.rows));
      });
