@@ -204,6 +204,8 @@ app.get('/getallorder/', function (req, res) {
     });
 });
 
+
+
 //get all order
 app.post('/getorder/', function (req, res) {
     var postData = req.body;
@@ -585,6 +587,19 @@ app.get('/getdanhsachdonhang/', function (req, res) {
     res.header("Access-Control-Allow-Headers", "Origin,X-Requested-With,Content-Type,Accept,content-type,application/json");
     console.log(req);
     pool.query('select * from danhsachdonhang', function (error, results, fields) {
+        if (error) throw error;
+        res.end(JSON.stringify(results.rows));
+    });
+});
+
+app.get('/getdanhsachdonhangtemp/', function (req, res) {
+    
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin,X-Requested-With,Content-Type,Accept,content-type,application/json");
+    console.log(req);
+    pool.query('select * from danhsachdonhangtemp', function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
     });
