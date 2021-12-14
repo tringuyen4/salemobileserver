@@ -482,7 +482,7 @@ app.post('/quanlymay/', function (req, res) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
-    pool.query('INSERT INTO quanlymay VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17)', postData, function (error, results, fields) {
+    pool.query('INSERT INTO quanlymay VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20)', postData, function (error, results, fields) {
         if (error) throw error;
         res.end(JSON.stringify(results.rows));
     });
@@ -716,7 +716,7 @@ app.put('/updatetrangthaidonhang/', function (req, res) {
      res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
      res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
 
-     pool.query('UPDATE quanlymay SET trangthai=($1) where masanpham=($2)', postData, function (error, results, fields) {
+     pool.query('UPDATE quanlymay SET trangthai=($1), madonhang=($2), ngayban=($3) where masanpham=($4)', postData, function (error, results, fields) {
          if (error) throw error;
          res.end(JSON.stringify(results.rows));
      });
