@@ -32,11 +32,11 @@ app.use(cors());
 //     console.log('You are now connected...')
 // })
 
-// const pool = new Pool({ connectionString,ssl: {
-//     rejectUnauthorized: false
-//   } })
+const pool = new Pool({ connectionString,ssl: {
+    rejectUnauthorized: false
+  } })
 
-const pool = new Pool({ connectionString })
+// const pool = new Pool({ connectionString })
 
 module.exports = { pool }
 
