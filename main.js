@@ -15,8 +15,11 @@ const { Pool } = require('pg')
 // });
 
 
+// var connectionString =
+//     'postgres://grxxpoarpiuavs:cfbac00262108211848f78f3234850233b3bb8cf46d21b15767edc15da9a8fd6@ec2-54-144-165-97.compute-1.amazonaws.com:5432/d9p69l7ts82ekg'
+
 var connectionString =
-    'postgres://grxxpoarpiuavs:cfbac00262108211848f78f3234850233b3bb8cf46d21b15767edc15da9a8fd6@ec2-54-144-165-97.compute-1.amazonaws.com:5432/d9p69l7ts82ekg'
+    'postgres://uzabbbstzsgxdf:53f77504b9909761573a7766519f5ce7cfe7b454921f7fe31fd2da32471f4e94@ec2-54-86-224-85.compute-1.amazonaws.com:5432/d7gne240mi28ui'
 
 app.use(cors());
 
